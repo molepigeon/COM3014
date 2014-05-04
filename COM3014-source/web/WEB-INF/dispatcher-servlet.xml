@@ -35,4 +35,5 @@
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="index" />
 
+    <bean class="controller.HelloController" p:helloService-ref="helloService" />
 </beans>

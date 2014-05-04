@@ -4,12 +4,14 @@
  * and open the template in the editor.
  */
 
-package controllers;
+package service;
 
 /**
  *
  * @author Michael
  */
-public class derp {
-    
+public class HelloService {
+    public static String sayHello(String name){
+        return "Hello, "+name+"!";
+    }
 }
