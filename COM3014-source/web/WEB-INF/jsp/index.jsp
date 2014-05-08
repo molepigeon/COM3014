@@ -5,14 +5,36 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Welcome to Spring Web MVC project</title>
+        <meta name="google-signin-clientid" content="224915916800-pnk6oijt8djtvfekugd1bbjsivhlulip.apps.googleusercontent.com" />
+        <meta name="google-signin-cookiepolicy" content="single_host_origin" />
+        <meta name="google-signin-callback" content="signinCallback" />
+        <meta name="google-signin-requestvisibleactions" content="https://schemas.google.com/AddActivity" />
+        <meta name="google-signin-scope" content="https://www.googleapis.com/auth/plus.login" />
+        <title>Surrey Share</title>
+        <script src="js/jquery.js" type="text/javascript"></script>
+        <script src="https://apis.google.com/js/client:plusone.js" type="text/javascript"></script>
+        <script src="js/functions.js" type="text/javascript"></script>
+        <link href="css/main.css" rel="stylesheet" type="text/css"/>
     </head>
-
-    <body>
-        <p>Hello! This is the default welcome page for a Spring Web MVC project.</p>
-        <p><i>To display a different welcome page for this project, modify</i>
-            <tt>index.jsp</tt> <i>, or create your own welcome page then change
-                the redirection in</i> <tt>redirect.jsp</tt> <i>to point to the new
-                welcome page and also update the welcome-file setting in</i>
-            <tt>web.xml</tt>.fgdfvbzvxfcdb
+    <body> 
+    <header>
+        <h1>Surrey Share</h1>
+        <div id="userbox">
+            <span id="signinButton">
+                <span class="g-signin"></span>
+            </span>
+            <span id="signoutButton"></span>
+        </div>
+    </header>
+    <div id="dashboard">
+        <ul class="content" id="contentList">
+            <li class="polaroid"><a href="#" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
+            <li class="polaroid"><a href="#" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
+            <li class="polaroid"><a href="#" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
+            <li class="polaroid"><a href="#" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
+            <li class="polaroid"><a href="#" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
+            <li class="polaroid"><a href="#" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
+        </ul>
+    </div>
+    </body>
 </html>

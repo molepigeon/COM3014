@@ -1,7 +1,7 @@
 <%-- 
     Document   : nameView
     Created on : 04-May-2014, 16:40:30
-    Author     : Michael
+    Author     : Michael, Jade
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <form action="/COM3014-source/hello/postuid" method="post">
+        <form action="/COM3014-source/postuid.htm" method="post">
             <input type="text" name="id"> </input>
             <input type="submit" value="Submit"> </input>
         </form>

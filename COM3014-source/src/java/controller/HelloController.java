@@ -17,11 +17,15 @@ import service.HelloService;
 
 /**
  *
- * @author Michael
+ * @author Michael, Jade
  */
 @Controller
-@RequestMapping("hello")
 public class HelloController{
+    
+    @RequestMapping(value="index", method=RequestMethod.GET)
+    public String onIndex(ModelMap model){
+        return "index";
+    }
 
     //Use onSubmit instead of doSubmitAction 
     //when you need access to the Request, Response, or BindException objects
@@ -45,6 +49,7 @@ public class HelloController{
         user.setID(id);
         user.setName("Joe Bloggs");
         model.addAttribute("helloMessage", user.getName());
+        System.out.println("ID Ajax Request Made: "+id);
         return "helloView";
     }
 }

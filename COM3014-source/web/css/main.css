@@ -1,0 +1,94 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+
+html, body
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'Oswald', sans-serif;
+    height: 100%;
+}
+
+body {
+    background-color: #FFF;
+}
+
+li {
+    list-style: none;
+}
+
+ul {
+    padding: 0px;
+}
+
+header {
+    background-color: #6A9AE1;
+    padding: 20px;
+    overflow: hidden;
+}
+
+h1 {
+    margin: 0px;
+    padding-top: 21px;
+    padding-bottom: 21px;
+    font-size: 60px;
+}
+
+#dashboard {
+    position: relative;
+    margin: 10px;
+    width: 960px;
+    min-height: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    box-shadow: 10px 0 15px rgba(0, 0, 0, 0.5), -10px 0 15px rgba(0, 0, 0, 0.5);
+    overflow:visible;
+}
+
+.polaroid {
+    padding: 10px 10px 15px;
+    margin: 30px;
+    width: 200px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.5);
+    text-align: center;
+    display: inline-block;
+}
+
+.polaroid img {
+    width: 200px;
+}
+
+.polaroid a {
+    text-decoration: none;
+    color: #000;
+}
+
+#contentList{
+    margin-left: auto;
+    margin-right: auto;
+    width: 850px;
+}
+
+ul.content a:after {
+  content: attr(title);
+}
+
+#userbox {
+    float: right;
+}
+
+#signinButton {
+    display: none;
+}
+
+#signoutButton {
+    display: none;
+    width: 111px;
+    height: 37px;
+    background-image: url('../images/signout.png');
+    background-repeat:no-repeat;
+}
+
+#signoutButton:hover {
+    background-image: url('../images/signout-hover.png');
+}
