@@ -20,10 +20,13 @@
     <header>
         <h1>Surrey Share</h1>
         <div id="userbox">
-            <span id="signinButton">
-                <span class="g-signin"></span>
+            <span id="username">Not logged in</span>
+            <span id="loginbuttons">
+                <span id="signinButton">
+                    <span class="g-signin"></span>
+                </span>
+                <span id="signoutButton"></span>
             </span>
-            <span id="signoutButton"></span>
         </div>
     </header>
     <div id="dashboard">

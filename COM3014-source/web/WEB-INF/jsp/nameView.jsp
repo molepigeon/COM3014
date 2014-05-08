@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <form action="/COM3014-source/postuid.htm" method="post">
+        <form action="postuid.htm" method="post">
             <input type="text" name="id"> </input>
             <input type="submit" value="Submit"> </input>
         </form>

@@ -2,6 +2,8 @@ $(function() { //Document Ready
     $('#signoutButton').click(logOut);
     $("#showLogin").click(buttonTest);
     
+    document.getElementById('signinButton').setAttribute('style', 'display: inline');
+    
     $(window).scroll(function(){
         var count = 1; //Page Count
         if  ($(window).scrollTop() === $(document).height() - $(window).height()){
@@ -16,6 +18,7 @@ function signinCallback(authResult) {
       if (authResult['status']['signed_in']) {
         document.getElementById('signinButton').setAttribute('style', 'display: none');
         document.getElementById('signoutButton').setAttribute('style', 'display: inline-block');
+        idPass(authResult['id_token']);
         console.log('User Token: ' + authResult['id_token']);
         
         
@@ -28,30 +31,17 @@ function signinCallback(authResult) {
     
 function idPass(idToken) {
     $.ajax({
-    url: "post.php",
- 
-    // the data to send (will be converted to a query string)
+    url: "postuid.htm",
     data: {
-        id: 123
+        id: idToken
     },
- 
-    // whether this is a POST or GET request
-    type: "GET",
- 
-    // the type of data we expect back
-    dataType : "json",
- 
-    // code to run if the request succeeds;
-    // the response is passed to the function
+    type: "POST",
+    dataType : "text",
     success: function( json ) {
-        $( "<h1/>" ).text( json.title ).appendTo( "body" );
-        $( "<div class=\"content\"/>").html( json.html ).appendTo( "body" );
+        $( "#username" ).text( json.title ).text(json);
     },
- 
-    // code to run if the request fails; the raw request and
-    // status codes are passed to the function
     error: function( xhr, status, errorThrown ) {
-        alert( "Sorry, there was a problem!" );
+        alert( "Something went wrong!" );
         console.log( "Error: " + errorThrown );
         console.log( "Status: " + status );
         console.dir( xhr );
@@ -59,7 +49,7 @@ function idPass(idToken) {
  
     // code to run regardless of success or failure
     complete: function( xhr, status ) {
-        alert( "The request is complete!" );
+        //alert( "The request is complete!" );
     }
 });
 }
@@ -81,7 +71,7 @@ function infiniScroll(pageNumber) {
     
 function logOut() {
     gapi.auth.signOut();
-    //location.reload();
+    location.reload();
 }
 
 function buttonTest() {

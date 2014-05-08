@@ -15,13 +15,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import service.HelloService;
 
+
 /**
  *
  * @author Michael, Jade
  */
 @Controller
 public class HelloController{
-    
+       
     @RequestMapping(value="index", method=RequestMethod.GET)
     public String onIndex(ModelMap model){
         return "index";
