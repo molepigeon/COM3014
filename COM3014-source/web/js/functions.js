@@ -18,8 +18,12 @@ function signinCallback(authResult) {
       if (authResult['status']['signed_in']) {
         document.getElementById('signinButton').setAttribute('style', 'display: none');
         document.getElementById('signoutButton').setAttribute('style', 'display: inline-block');
-        idPass(authResult['code'],authResult['id_token'],authResult['access_token'],$("meta[property='google-state']").attr('content'));
-        console.log('User Token: ' + authResult['id_token']);
+        idPass(authResult['code'],authResult['id_token'],authResult['access_token'],$('meta[name=google-state]').attr('content'));
+       
+        console.log("User Code: "+authResult['code']);
+        console.log("ID Token: "+authResult['id_token']);
+        console.log("Access Token "+authResult['access_token']);
+        console.log("State "+$('meta[name=google-state]').attr('content'));
         
         
       } else {
@@ -39,7 +43,7 @@ function idPass(code,id,access,state) {
         state: state
     },
     type: "POST",
-    dataType : "text",
+    dataType : "text",    
     success: function( json ) {
         $( "#username" ).text( json.title ).text(json);
     },

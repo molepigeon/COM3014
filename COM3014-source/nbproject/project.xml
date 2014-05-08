@@ -16,10 +16,16 @@
                 </library>
                 <library dirs="200">
                     <file>${libs.Google APIs.classpath}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
                     <file>${libs.Google OAuth.classpath}</file>
+                </library>
+                <library dirs="200">
+                    <file>${libs.Google API.classpath}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${libs.OAuth.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
