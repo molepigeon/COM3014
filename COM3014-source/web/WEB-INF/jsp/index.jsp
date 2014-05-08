@@ -15,6 +15,7 @@
         <script src="https://apis.google.com/js/client:plusone.js" type="text/javascript"></script>
         <script src="js/functions.js" type="text/javascript"></script>
         <link href="css/main.css" rel="stylesheet" type="text/css"/>
+        <meta name="google-state" content="${gState}" />
     </head>
     <body> 
     <header>
