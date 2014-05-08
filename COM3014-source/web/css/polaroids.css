@@ -21,14 +21,14 @@ and open the template in the editor.
 }
  
 /* Don't rotate every third image, but offset its position */
-.polaroid:nth-child(3n) {
+/*.polaroid:nth-child(3n) {
   -webkit-transform: none;
   -moz-transform: none;
   position: relative;
   top: -5px;
 }
  
-/* Rotate every fifth image by 5 degrees and offset it */
+ Rotate every fifth image by 5 degrees and offset it 
 .polaroid:nth-child(5n) {
   -webkit-transform: rotate(5deg);
   -moz-transform: rotate(5deg);
@@ -36,27 +36,27 @@ and open the template in the editor.
   right: 5px;
 }
  
-/* Keep default rotate for every eighth, but offset it */
+ Keep default rotate for every eighth, but offset it 
 .polaroid:nth-child(8n) {
   position: relative;
   top: 8px;
   right: 5px;
 }
  
-/* Keep default rotate for every eleventh, but offset it */
+ Keep default rotate for every eleventh, but offset it 
 .polaroid:nth-child(11n) {
   position: relative;
   top: 3px;
   left: -5px;
 }
 
-/* Scale the images on hover, add transitions for smoothing things out, and ensure the hover appears on top */
+ Scale the images on hover, add transitions for smoothing things out, and ensure the hover appears on top 
 ul.polaroid a:hover {
   -webkit-transform: scale(1.25);
   -moz-transform: scale(1.25);
   position: relative;
   z-index: 5;
-}
+}*/
 
 /* Add drop shadows and smooth out the transition (Safari only) */
 ul.polaroid a {
