@@ -7,6 +7,7 @@
 package controller;
 
 import beans.Name;
+import beans.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +36,15 @@ public class HelloController{
         Name nameObject = new Name();
         nameObject.setName(name);
         model.addAttribute("helloMessage", HelloService.sayHello(nameObject.getName()));
+        return "helloView";
+    }
+    
+    @RequestMapping(value="postuid", method=RequestMethod.POST)
+    public String handleAjaxUserId(ModelMap model, @RequestParam("id") String id){
+        User user = new User();
+        user.setID(id);
+        user.setName("Joe Bloggs");
+        model.addAttribute("helloMessage", user.getName());
         return "helloView";
     }
 }

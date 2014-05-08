@@ -13,8 +13,8 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <form action="/COM3014-source/hello/submit" method="post">
-            <input type="text" name="name"> </input>
+        <form action="/COM3014-source/hello/postuid" method="post">
+            <input type="text" name="id"> </input>
             <input type="submit" value="Submit"> </input>
         </form>
     </body>
