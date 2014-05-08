@@ -6,42 +6,35 @@
 
 package controller;
 
-import java.net.BindException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.SimpleFormController;
+import beans.Name;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import service.HelloService;
 
 /**
  *
  * @author Michael
  */
-public class HelloController extends SimpleFormController {
-    private HelloService helloService;
-    
-    public HelloController() {
-        //Initialize controller properties here or 
-        //in the Web Application Context
-
-        setCommandClass(Name.class);
-        setCommandName("name");
-        setSuccessView("helloView");
-        setFormView("nameView");
-    }
-    
-    public void setHelloService(HelloService helloService){
-        this.helloService = helloService;
-    }
+@Controller
+@RequestMapping("hello")
+public class HelloController{
 
     //Use onSubmit instead of doSubmitAction 
     //when you need access to the Request, Response, or BindException objects
-    @Override
-    protected ModelAndView onSubmit(
-     Object command) throws Exception {
-     ModelAndView mv = new ModelAndView(getSuccessView());
-     Name name = (Name)command;
-     mv.addObject("helloMessage", helloService.sayHello(name.getValue()));
-     return mv;
+    //@RequestMapping(value="/submit", method=RequestMethod.POST)
+    @RequestMapping(value="landing", method=RequestMethod.GET)
+    public String onLanding(ModelMap model){
+     return "nameView";
      }
+    
+    @RequestMapping(value="submit", method=RequestMethod.POST)
+    public String onSubmit(ModelMap model, @RequestParam("name") String name){
+        Name nameObject = new Name();
+        nameObject.setName(name);
+        model.addAttribute("helloMessage", HelloService.sayHello(nameObject.getName()));
+        return "helloView";
+    }
 }

@@ -20,5 +20,4 @@
     p:password="${jdbc.password}" /-->
 
     <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
-<bean name="helloService" class="service.HelloService" />
 </beans>

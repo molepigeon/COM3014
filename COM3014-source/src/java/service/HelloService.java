@@ -6,10 +6,13 @@
 
 package service;
 
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author Michael
  */
+@Service
 public class HelloService {
     public static String sayHello(String name){
         return "Hello, "+name+"!";

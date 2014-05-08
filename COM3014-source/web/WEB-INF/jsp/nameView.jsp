@@ -5,7 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,16 +13,9 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <spring:nestedPath path="name">
-            <form action="" method="post">
-                Name:
-                <spring:bind path="value">
-                    <input type="text" 
-                           name="${status.expression}" 
-                           value="${status.value}"></input>
-                </spring:bind>
-                    <input type="submit" value="OK">
-            </form>
-        </spring:nestedPath>
+        <form action="/COM3014-source/hello/submit" method="post">
+            <input type="text" name="name"> </input>
+            <input type="submit" value="Submit"> </input>
+        </form>
     </body>
 </html>
