@@ -91,15 +91,20 @@ public class FileController implements ServletContextAware {
         if (allFiles!=null){
             System.out.println(allFiles.length);
             for (int i = 0; i<6; i++){
-                String filenameParameter = "filename"+(i+1);
-                String idParameter = "userID"+(i+1);
+                try{
+                    String filenameParameter = "filename"+(i+1);
+                    String idParameter = "userID"+(i+1);
 
-                String filename = allFiles[i+firstFile].getName();
-                model.addAttribute(filenameParameter, filename);
+                    String filename = allFiles[i+firstFile].getName();
+                    model.addAttribute(filenameParameter, filename);
 
-                System.out.println(filename);
-                String splitFilename = filename.split("-")[1].split("\\.")[0];
-                model.addAttribute(idParameter, splitFilename);
+                    System.out.println(filename);
+                    String splitFilename = filename.split("-")[1].split("\\.")[0];
+                    model.addAttribute(idParameter, splitFilename);
+                }catch (ArrayIndexOutOfBoundsException e){
+                    model.addAttribute("filename"+(i+1), "");
+                    model.addAttribute("userID"+(i+1), "");
+                }
             }
         }
         return "imageJSON";
