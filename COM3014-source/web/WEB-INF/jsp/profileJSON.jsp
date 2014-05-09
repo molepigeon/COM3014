@@ -1,1 +1,5 @@
-{ "username":"${userName}", "avatarURL":"${userAvatar}", "profileURL":"${userURL}"}
+{ 
+    "username":"${userName}", 
+    "avatarURL":"${userAvatar}", 
+    "profileURL":"${userURL}"
+}
