@@ -19,6 +19,7 @@ $(function() { //Document Ready
     uploadingBay.on("complete", function(file){
         uploadingBay.removeAllFiles(true);
         hideUploadBox();
+        $('#uploadMessage').attr("style","display: block");    
     });
 });
 
