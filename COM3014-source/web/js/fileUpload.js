@@ -22,7 +22,7 @@ $(function() { //Document Ready
         $('#uploadMessage').attr("style","display: block");
         
         $.ajax({
-            url: "rest/getMoreImages/0",
+            url: "rest/getMoreImages/0/0",
             type:'GET',
             success: function(imageJSON){
                 
