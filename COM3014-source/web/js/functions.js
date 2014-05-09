@@ -2,7 +2,9 @@ $(function() { //Document Ready
     $('#signoutButton').click(logOut);
     $('#uploadButton').click(displayUploadBox);
     $('#lightbox').click(hideUploadBox);
-    document.getElementById('signinButton').setAttribute('style', 'display: inline');
+    $('#signinButton').attr('style', 'display: inline');
+    
+    infiniScroll(0);
     
     $(window).scroll(function(){
         var count = 1; //Page Count
@@ -72,6 +74,7 @@ function infiniScroll(pageNumber) {
     });
     */
     $("#contentList").append('<li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li><li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li><li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li><li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li><li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li><li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>');
+    $(".polaroid").draggable({scroll: true,revert: true,stack:".polaroid"});
     return false;
 }
     
@@ -81,11 +84,11 @@ function logOut() {
 }
 
 function displayUploadBox() {
-    $("#uploadBox").fadeIn(2000);
-    $("#lightbox").fadeIn(2000);
+    $("#uploadBox").fadeIn(500);
+    $("#lightbox").fadeIn(500);
 }
 
 function hideUploadBox() {
-    $("#uploadBox").fadeOut(2000);
-    $("#lightbox").fadeOut(2000);
+    $("#uploadBox").fadeOut(500);
+    $("#lightbox").fadeOut(500);
 }

@@ -19,6 +19,8 @@
         <script src="https://apis.google.com/js/client:plusone.js" type="text/javascript"></script>
         <script src="js/functions.js" type="text/javascript"></script>
         
+        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        
         <link href="css/main.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
@@ -44,12 +46,6 @@
     </header>
     <div id="dashboard">
         <ul class="content" id="contentList">
-            <li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
-            <li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
-            <li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
-            <li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
-            <li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
-            <li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
         </ul>
     </div>
     </body>
