@@ -23,25 +23,24 @@ import org.springframework.web.context.ServletContextAware;
 public class RestfulFileFetchingController implements ServletContextAware{
     private ServletContext sc;
     
-    @RequestMapping(value="getMoreImages/{index}", method=RequestMethod.GET)
-    public String getMoreImages(ModelMap model, @PathVariable("index") int index){
+    @RequestMapping(value="getMoreImages/{index}/{shunt}", method=RequestMethod.GET)
+    public String getMoreImages(ModelMap model, @PathVariable("index") int index, @PathVariable("shunt") int shunt){
         //TODO implement this
         int firstFile = index * 6;
         //File directory BECAUSE JAVA
         File directory = new File(sc.getRealPath("")+File.separator+"uploads");
         
         File[] allFiles = directory.listFiles();
-        
-        int oldestFile = (allFiles.length)-1;
-        
         if (allFiles!=null){
+            int oldestFile = (allFiles.length)-1;
+        
             System.out.println(allFiles.length);
             for (int i = 0; i<6; i++){
                 try{
                     String filenameParameter = "filename"+(i+1);
                     String idParameter = "userID"+(i+1);
 
-                    String filename = allFiles[oldestFile-(i+firstFile)].getName();
+                    String filename = allFiles[oldestFile-(i+firstFile+shunt)].getName();
                     model.addAttribute(filenameParameter, filename);
 
                     System.out.println(filename);
