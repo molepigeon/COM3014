@@ -18,15 +18,15 @@ $(function() { //Document Ready
 
 function signinCallback(authResult) {
       if (authResult['status']['signed_in']) {
-        document.getElementById('signinButton').setAttribute('style', 'display: none');
-        document.getElementById('signoutButton').setAttribute('style', 'display: inline-block');
-        document.getElementById('uploadButton').setAttribute('style', 'display: inline-block');
-        document.getElementById('avatar').setAttribute('style', 'display: inline-block');
+        $('#signinButton').attr('style', 'display: none');
+        $('#signoutButton').attr('style', 'display: inline-block');
+        $('#uploadButton').attr('style', 'display: inline-block');
+        $('#avatar').attr('style', 'display: inline-block');
+        
         idPass(authResult['code'],authResult['id_token'],authResult['access_token'],$('meta[name=google-state]').attr('content'));
       } else {
-        document.getElementById('signinButton').setAttribute('style', 'display: inline');
-        document.getElementById('signoutButton').setAttribute('style', 'display: none');
-        console.log('Sign-in state: ' + authResult['error']);
+        $('#signinButton').attr('style', 'display: inline');
+        $('#signoutButton').attr('style', 'display: none');
       }
     }
     
