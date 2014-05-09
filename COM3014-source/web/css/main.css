@@ -1,5 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Oswald);
 @import url(polaroids.css);
+@import url(upload.css);
 
 html, body
 {
@@ -159,8 +160,15 @@ a#profilelink {
     margin-top: -150px;
     margin-left: -200px;
     background-color: #FFF;
-    -webkit-transform: rotate(5deg);
-    transform: rotate(5deg);
+    border-radius: 5px;
+}
+
+#uploadMessage {
+    line-height: 300px;
+    text-align: center;
+    width: 100%;
+    position:relative;
+    display: inline-block;
 }
 
 #uploader {

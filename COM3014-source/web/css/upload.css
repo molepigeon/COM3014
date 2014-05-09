@@ -8,19 +8,30 @@ and open the template in the editor.
     Author     : Jade
 */
 
-.dz-preview {}
+.dz-preview {
+    padding: 20px;
+}
 .dz-file-preview {}
-.dz-details {}
-.dz-filename {}
-.data-dz-name {}
-.dz-size {}
-.data-dz-size {}
-.data-dz-thumbnail {}
-.dz-progress {}
+.dz-details img {
+    height: 260px;
+    width: 360px;
+}
+.dz-filename {
+    display: none;
+}
+.dz-size {
+    display: none;
+}
+.dz-progress {
+    display: none;
+}
 .dz-upload {}
-.data-dz-uploadprogress {}
-.dz-success-mark {}
-.dz-error-mark {}
-.dz-error-message {}
-.data-dz-errormessage {}
-
+.dz-success-mark {
+    display: none;
+}
+.dz-error-mark {
+    display: none;
+}
+.dz-error-message {
+    
+}
