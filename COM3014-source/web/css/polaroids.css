@@ -52,8 +52,8 @@ and open the template in the editor.
 
 /* Scale the images on hover, add transitions for smoothing things out, and ensure the hover appears on top */
 .polaroid:hover {
-  -webkit-transform: scale(1.25);
-  -moz-transform: scale(1.25);
+  -webkit-transform: scale(1.75);
+  -moz-transform: scale(1.75);
   position: relative;
   z-index: 5;
 }

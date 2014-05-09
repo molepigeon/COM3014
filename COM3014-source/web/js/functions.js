@@ -1,7 +1,7 @@
-$(function() { //Document Ready
+$(function() { //Document Ready   
     $('#signoutButton').click(logOut);
-    $("#showLogin").click(buttonTest);
-    
+    $('#uploadButton').click(displayUploadBox);
+    $('#lightbox').click(hideUploadBox);
     document.getElementById('signinButton').setAttribute('style', 'display: inline');
     
     $(window).scroll(function(){
@@ -18,14 +18,9 @@ function signinCallback(authResult) {
       if (authResult['status']['signed_in']) {
         document.getElementById('signinButton').setAttribute('style', 'display: none');
         document.getElementById('signoutButton').setAttribute('style', 'display: inline-block');
+        document.getElementById('uploadButton').setAttribute('style', 'display: inline-block');
+        document.getElementById('avatar').setAttribute('style', 'display: inline-block');
         idPass(authResult['code'],authResult['id_token'],authResult['access_token'],$('meta[name=google-state]').attr('content'));
-       
-        console.log("User Code: "+authResult['code']);
-        console.log("ID Token: "+authResult['id_token']);
-        console.log("Access Token "+authResult['access_token']);
-        console.log("State "+$('meta[name=google-state]').attr('content'));
-        
-        
       } else {
         document.getElementById('signinButton').setAttribute('style', 'display: inline');
         document.getElementById('signoutButton').setAttribute('style', 'display: none');
@@ -45,7 +40,11 @@ function idPass(code,id,access,state) {
     type: "POST",
     dataType : "text",    
     success: function( json ) {
-        $( "#username" ).text( json.title ).text(json);
+        
+        var results = $.parseJSON(json);
+        $( "#username" ).text( results.username );
+        $( "#smallavatar" ).attr("src", results.avatarURL );
+        $( "#profilelink" ).attr("href", results.profileURL );
     },
     error: function( xhr, status, errorThrown ) {
         alert( "Something went wrong!" );
@@ -64,15 +63,15 @@ function idPass(code,id,access,state) {
 function infiniScroll(pageNumber) {
     /*
     $.ajax({
-        url: "page",
+        url: "imageload",
         type:'POST',
         data: pageNumber, 
-        success: function(html){
-            $("#dashboard").append("Hello");    // This will be the div where our content will be loaded
+        success: function(imageJSON){
+            //DO THINGS HERE
         }
     });
     */
-    $("#contentList").append('<li class="polaroid"><a href="#" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li><li class="polaroid"><a href="#" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li><li class="polaroid"><a href="#" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li><li class="polaroid"><a href="#" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li><li class="polaroid"><a href="#" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li><li class="polaroid"><a href="#" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>');
+    $("#contentList").append('<li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li><li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li><li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li><li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li><li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li><li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>');
     return false;
 }
     
@@ -81,6 +80,12 @@ function logOut() {
     location.reload();
 }
 
-function buttonTest() {
-    document.getElementById('signinButton').setAttribute('style', 'display: inline');
+function displayUploadBox() {
+    $("#uploadBox").fadeIn(2000);
+    $("#lightbox").fadeIn(2000);
+}
+
+function hideUploadBox() {
+    $("#uploadBox").fadeOut(2000);
+    $("#lightbox").fadeOut(2000);
 }

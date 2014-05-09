@@ -17,6 +17,9 @@ import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson.JacksonFactory;
 import com.google.api.services.oauth2.Oauth2;
 import com.google.api.services.oauth2.model.Tokeninfo;
+import com.google.api.services.plus.Plus;
+import com.google.api.services.plus.model.PeopleFeed;
+import com.google.api.services.plus.model.Person;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
@@ -25,14 +28,13 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import service.HelloService;
 
 /**
  *
  * @author Michael, Jade
  */
 @Controller
-public class HelloController{
+public class LoginController{
         /*
      * Default HTTP transport to use to make HTTP requests.
      */
@@ -56,7 +58,7 @@ public class HelloController{
     /*
      * Optionally replace this with your application's name.
      */
-    private static final String APPLICATION_NAME = "Google+ Java Quickstart";
+    private static final String APPLICATION_NAME = "Surrey Share";
     
     State state;
     
@@ -78,14 +80,6 @@ public class HelloController{
      return "nameView";
      }
     
-    @RequestMapping(value="submit", method=RequestMethod.POST)
-    public String onSubmit(ModelMap model, @RequestParam("name") String name){
-        Name nameObject = new Name();
-        nameObject.setName(name);
-        model.addAttribute("helloMessage", HelloService.sayHello(nameObject.getName()));
-        return "helloView";
-    }
-    
     @RequestMapping(value="postuid", method=RequestMethod.POST)
     public String handleAjaxUserId(ModelMap model,  
             @RequestParam("code") String code,
@@ -93,14 +87,10 @@ public class HelloController{
             @RequestParam("access") String accessID, 
             @RequestParam("state") String state){
         
-        User user = new User();
-        user.setID(id);
-        user.setName("Joe Bloggs");
-        
         //Check that the state token matches the one we gave the client
         if (!state.equals(this.state.getState())){
             System.out.println("N");
-            return "helloView";
+            return "profileJSON";
         } else {
             System.out.println("Y");
         }
@@ -119,25 +109,37 @@ public class HelloController{
             
             if (tokenInfo.containsKey("error")){
                 System.out.println("Error in token info");
-                return "helloView";
+                return "profileJSON";
             }
             
-            if (!tokenInfo.getUserId().equals(id)) {
+            if (!tokenInfo.getUserId().equals(tokenResponse.parseIdToken().getPayload().getUserId())) {
+                //Token recieved is user ID (+ profile number)
                 System.out.println("Token doesn't match user's ID");
-                return "helloView";
+                return "profileJSON";
             }
             
             if (!tokenInfo.getIssuedTo().equals(CLIENT_ID)) {
                 System.out.println("Token wasn't meant for us");
-                return "helloView";
+                return "profileJSON";
             }
             
             token = tokenResponse.toString();
             
-            model.addAttribute("helloMessage", user.getName());
+            //            
+            //            
+            //THIS CODE MIGHT NEED TO BE A SERVICE?
+            //
+            //
+            
+            Plus service = new Plus.Builder(TRANSPORT, JSON_FACTORY, credential).setApplicationName(APPLICATION_NAME).build();
+            Person thisUser = service.people().get("me").execute();
+            
+            model.addAttribute("userName", thisUser.getDisplayName());
+            model.addAttribute("userAvatar", thisUser.getImage().getUrl());
+            model.addAttribute("userURL", thisUser.getUrl());
+            
         } catch (IOException e){
         }
-        System.out.println("ID Ajax Request Made: "+id);
-        return "helloView";
+        return "profileJSON";
     }
 }

@@ -10,19 +10,31 @@
         <meta name="google-signin-callback" content="signinCallback" />
         <meta name="google-signin-requestvisibleactions" content="https://schemas.google.com/AddActivity" />
         <meta name="google-signin-scope" content="https://www.googleapis.com/auth/plus.login" />
+        <meta name="google-state" content="${gState}" />
+        
         <title>Surrey Share</title>
+        
+        <script src="js/fileupload.js" type="text/javascript"></script>
         <script src="js/jquery.js" type="text/javascript"></script>
         <script src="https://apis.google.com/js/client:plusone.js" type="text/javascript"></script>
         <script src="js/functions.js" type="text/javascript"></script>
+        
         <link href="css/main.css" rel="stylesheet" type="text/css"/>
-        <meta name="google-state" content="${gState}" />
     </head>
-    <body> 
+    <body>
+    <div id="lightbox"></div>
+    <div id="uploadBox">
+        <p id="uploadPrompt">Drop your images here to upload!</p>
+    </div>
     <header>
         <h1>Surrey Share</h1>
         <div id="userbox">
-            <span id="username">Not logged in</span>
+            <a id="profilelink" href="">
+                <span id="avatar"><img src="" id="smallavatar"/></span>
+                <span id="username">Not logged in</span>
+            </a>
             <span id="loginbuttons">
+                <span id="uploadButton"></span>
                 <span id="signinButton">
                     <span class="g-signin"></span>
                 </span>
@@ -32,12 +44,12 @@
     </header>
     <div id="dashboard">
         <ul class="content" id="contentList">
-            <li class="polaroid"><a href="#" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
-            <li class="polaroid"><a href="#" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
-            <li class="polaroid"><a href="#" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
-            <li class="polaroid"><a href="#" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
-            <li class="polaroid"><a href="#" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
-            <li class="polaroid"><a href="#" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
+            <li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
+            <li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
+            <li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
+            <li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
+            <li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
+            <li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>
         </ul>
     </div>
     </body>

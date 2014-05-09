@@ -53,6 +53,7 @@ h1 {
     box-shadow: 0 3px 6px rgba(0,0,0,0.5);
     text-align: center;
     display: inline-block;
+    background-color: #FFF;
 }
 
 .polaroid img {
@@ -83,6 +84,14 @@ ul.content a:after {
     display: none;
 }
 
+#uploadButton {
+    display: none;
+    width: 111px;
+    height: 37px;
+    background-image: url('../images/upload.png');
+    background-repeat:no-repeat;
+}
+
 #signoutButton {
     display: none;
     width: 111px;
@@ -91,13 +100,16 @@ ul.content a:after {
     background-repeat:no-repeat;
 }
 
+#uploadButton:hover {
+    background-image: url('../images/upload-hover.png');
+}
+
 #signoutButton:hover {
     background-image: url('../images/signout-hover.png');
 }
 
 #loginbuttons {
     height: 31px;
-    width: 111px;
     overflow: hidden;
     display: inline-block;
 }
@@ -106,4 +118,54 @@ ul.content a:after {
     float: left;
     line-height: 31px;
     margin-right: 10px;
+}
+
+#avatar {
+    display: none;
+    height: 31px;
+    width: 31px;
+    float: left;
+}
+
+#smallavatar {
+    width: 31px;
+    border-radius: 50%;
+}
+
+a#profilelink {
+    color: #000;
+}
+
+#lightbox {
+    display: none;
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top:0px;
+    left:0px;
+    z-index: 10;
+    opacity: 0.9;
+}
+
+#uploadBox {
+    display: none;
+    z-index:15;
+    position: fixed;
+    width: 400px;
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -200px;
+    background-color: #FFF;
+    -webkit-transform: rotate(5deg);
+    transform: rotate(5deg);
+}
+
+#uploadPrompt {
+    line-height: 250px;
+    text-align: center;
+    font-size: 20px;
+    text-decoration:line-through;
 }
