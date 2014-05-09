@@ -18,8 +18,14 @@ $(function() { //Document Ready
         });
 });
 
+$(document).bind('DOMSubtreeModified', function () {
+    $(".polaroid").draggable({scroll: true,revert: true,stack:".polaroid"});
+});
+
 var streamOK = true;
 var count = 1; //Page Count
+var plusName = "";
+var uploadCount = 0;
 
 function signinCallback(authResult) {
       if (authResult['status']['signed_in']) {
@@ -58,11 +64,6 @@ function idPass(code,id,access,state) {
         console.log( "Error: " + errorThrown );
         console.log( "Status: " + status );
         console.dir( xhr );
-    },
- 
-    // code to run regardless of success or failure
-    complete: function( xhr, status ) {
-        //alert( "The request is complete!" );
     }
 });
 }
@@ -70,18 +71,20 @@ function idPass(code,id,access,state) {
 function infiniScroll(pageNumber) {
         
     $.ajax({
-        url: "getMoreImages/"+pageNumber+".htm",
+        url: "rest/getMoreImages/"+pageNumber+"/"+uploadCount,
         type:'GET',
         success: function(imageJSON){
             
             var imageResults = $.parseJSON(imageJSON);
-            for(var i=0;i<6;i++) {
+            for(var i=0;i<6;i++) {                
                 if(imageResults.images[i].userID !== "") {
-                
+                    
+                    getGPlusName(imageResults.images[i].userID);
+                    
                     $("#contentList").append(
                             '<li class="polaroid">'+
-                                '<a href="javascript:void(0)" title="'+imageResults.images[i].userID+'">'+
-                                        '<img src="uploads/'+imageResults.images[i].filename+'" alt="'+imageResults.images[i].userID+'" />'+
+                                '<a href="javascript:void(0)" title="'+plusName+'">'+
+                                        '<img src="uploads/'+imageResults.images[i].filename+'" alt="'+plusName+'" />'+
                                 '</a>'+
                             '</li>');
                 } else {
@@ -91,9 +94,6 @@ function infiniScroll(pageNumber) {
             
         }
     });
-    
-    $(".polaroid").draggable({scroll: true,revert: true,stack:".polaroid"});
-    return false;
 }
     
 function logOut() {
@@ -109,4 +109,16 @@ function displayUploadBox() {
 function hideUploadBox() {
     $("#uploadBox").fadeOut(500);
     $("#lightbox").fadeOut(500);
+}
+
+function getGPlusName(userID) {
+    $.ajax({
+        url: "https://www.googleapis.com/plus/v1/people/"+userID+"?key=AIzaSyAc4RcTyZ-faVwuPvmfXp67y-ubIWSyjj4&fields=displayName",
+        type:'GET',
+        async: false,
+        success: function(plusJSON){
+            window.plusName = plusJSON.displayName;
+            document.plusName = plusJSON.displayName;
+        }
+    });
 }

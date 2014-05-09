@@ -1,6 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 
 <html>
     <head>
@@ -17,6 +16,7 @@
         <script src="js/jquery.js" type="text/javascript"></script>
         <script src="js/dropzone.js"></script>
         <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script src="https://www.google.com/jsapi"></script>
         <script src="https://apis.google.com/js/client:plusone.js" type="text/javascript"></script>
         
         <script src="js/functions.js" type="text/javascript"></script>
@@ -35,7 +35,7 @@
         <h1>Surrey Share</h1>
         <div id="userbox">
             <a id="profilelink" href="">
-                <span id="avatar"><img src="" id="smallavatar"/></span>
+                <span id="avatar"><img src="" alt="avatar" id="smallavatar"/></span>
                 <span id="username">Not logged in</span>
             </a>
             <span id="loginbuttons">
