@@ -58,7 +58,7 @@ and open the template in the editor.
   z-index: 5;
 }
 
-/* Add drop shadows and smooth out the transition (Safari only) */
+/* Add drop shadows and smooth out the transition */
 .polaroid {
   -webkit-transition: -webkit-transform .15s linear;
   -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25);
