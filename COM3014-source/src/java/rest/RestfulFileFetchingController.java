@@ -31,6 +31,9 @@ public class RestfulFileFetchingController implements ServletContextAware{
         File directory = new File(sc.getRealPath("")+File.separator+"uploads");
         
         File[] allFiles = directory.listFiles();
+        
+        int oldestFile = (allFiles.length)-1;
+        
         if (allFiles!=null){
             System.out.println(allFiles.length);
             for (int i = 0; i<6; i++){
@@ -38,7 +41,7 @@ public class RestfulFileFetchingController implements ServletContextAware{
                     String filenameParameter = "filename"+(i+1);
                     String idParameter = "userID"+(i+1);
 
-                    String filename = allFiles[i+firstFile].getName();
+                    String filename = allFiles[oldestFile-(i+firstFile)].getName();
                     model.addAttribute(filenameParameter, filename);
 
                     System.out.println(filename);
