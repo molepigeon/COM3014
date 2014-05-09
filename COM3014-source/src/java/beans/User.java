@@ -6,10 +6,13 @@
 
 package beans;
 
+import org.springframework.context.annotation.Scope;
+
 /**
  *
  * @author Michael
  */
+@Scope("request")
 public class User {
     private String ID;
     private String name;

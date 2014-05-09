@@ -6,6 +6,8 @@
 
 package service;
 
+import beans.User;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,8 +15,14 @@ import org.springframework.stereotype.Service;
  * @author Michael
  */
 @Service
-public class HelloService {
-    public static String sayHello(String name){
-        return "Hello, "+name+"!";
+@Scope("request")
+public class UserService {
+    private static User user;
+    public static User getUser(){
+        return user;
+    }
+    
+    public static void setUser(User param){
+        user = param;
     }
 }

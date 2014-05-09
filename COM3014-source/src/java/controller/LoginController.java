@@ -6,7 +6,6 @@
 
 package controller;
 
-import beans.Name;
 import beans.State;
 import beans.User;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeTokenRequest;
@@ -23,17 +22,21 @@ import com.google.api.services.plus.model.Person;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import service.StateService;
+import service.UserService;
 
 /**
  *
  * @author Michael, Jade
  */
 @Controller
+@Scope("request")
 public class LoginController{
         /*
      * Default HTTP transport to use to make HTTP requests.
@@ -60,14 +63,14 @@ public class LoginController{
      */
     private static final String APPLICATION_NAME = "Surrey Share";
     
-    State state;
     
     String token;
     
     @RequestMapping(value="index", method=RequestMethod.GET)
     public String onIndex(ModelMap model){
-        state = new State();
+        State state = new State();
         state.setState(new BigInteger(130, new SecureRandom()).toString(32));
+        StateService.setState(state);
         model.addAttribute("gState", state.getState());
         return "index";
     }
@@ -87,8 +90,9 @@ public class LoginController{
             @RequestParam("access") String accessID, 
             @RequestParam("state") String state){
         
+        State oldState = StateService.getState();
         //Check that the state token matches the one we gave the client
-        if (!state.equals(this.state.getState())){
+        if (!state.equals(oldState.getState())){
             System.out.println("N");
             return "profileJSON";
         } else {
@@ -137,7 +141,10 @@ public class LoginController{
             model.addAttribute("userName", thisUser.getDisplayName());
             model.addAttribute("userAvatar", thisUser.getImage().getUrl());
             model.addAttribute("userURL", thisUser.getUrl());
-            
+            User user = new User();
+            user.setID(tokenInfo.getUserId());
+            user.setName(thisUser.getDisplayName());
+            UserService.setUser(user);
         } catch (IOException e){
         }
         return "profileJSON";
