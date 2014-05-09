@@ -163,9 +163,9 @@ a#profilelink {
     transform: rotate(5deg);
 }
 
-#uploadPrompt {
-    line-height: 250px;
-    text-align: center;
-    font-size: 20px;
-    text-decoration:line-through;
+#uploader {
+    width: 400px;
+    height: 300px;
+    font-size: 15px;
+    
 }

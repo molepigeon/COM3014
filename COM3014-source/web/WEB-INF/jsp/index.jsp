@@ -14,19 +14,21 @@
         
         <title>Surrey Share</title>
         
-        <script src="js/fileupload.js" type="text/javascript"></script>
         <script src="js/jquery.js" type="text/javascript"></script>
+        <script src="js/dropzone.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script src="https://apis.google.com/js/client:plusone.js" type="text/javascript"></script>
-        <script src="js/functions.js" type="text/javascript"></script>
         
-        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script src="js/functions.js" type="text/javascript"></script>
+         <script src="js/fileUpload.js" type="text/javascript"></script>
         
         <link href="css/main.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
     <div id="lightbox"></div>
     <div id="uploadBox">
-        <p id="uploadPrompt">Drop your images here to upload!</p>
+        <form action="fileupload" method="POST" class="dropzone square" id="uploader">
+        </form>
     </div>
     <header>
         <h1>Surrey Share</h1>
