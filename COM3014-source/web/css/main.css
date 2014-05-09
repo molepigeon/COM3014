@@ -126,6 +126,7 @@ ul.content a:after {
     height: 31px;
     width: 31px;
     float: left;
+    margin-right: 10px;
 }
 
 #smallavatar {
