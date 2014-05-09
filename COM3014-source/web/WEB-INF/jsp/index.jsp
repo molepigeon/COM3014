@@ -27,7 +27,8 @@
     <body>
     <div id="lightbox"></div>
     <div id="uploadBox">
-        <form action="fileupload" method="POST" class="dropzone square" id="uploader">
+        <form action="fileupload.htm" method="POST" id="uploader">
+            <span id="uploadMessage">Drag and drop an image to upload!</span>
         </form>
     </div>
     <header>
