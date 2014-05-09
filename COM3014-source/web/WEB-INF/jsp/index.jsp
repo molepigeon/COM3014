@@ -20,9 +20,12 @@
         <script src="https://apis.google.com/js/client:plusone.js" type="text/javascript"></script>
         
         <script src="js/functions.js" type="text/javascript"></script>
-         <script src="js/fileUpload.js" type="text/javascript"></script>
+        <script src="js/fileUpload.js" type="text/javascript"></script>
         
         <link href="css/main.css" rel="stylesheet" type="text/css"/>
+        
+        <link rel="shortcut icon" href="images/favicon.ico">
+        <link rel="icon" type="image/gif" href="images/animated_favicon1.gif">
     </head>
     <body>
     <div id="lightbox"></div>
