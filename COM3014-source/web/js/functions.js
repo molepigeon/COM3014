@@ -7,14 +7,19 @@ $(function() { //Document Ready
     infiniScroll(0);
     
     $(window).scroll(function(){
-        var count = 1; //Page Count
+        
         if  ($(window).scrollTop() === $(document).height() - $(window).height()){
-              console.log('Bottom of Page! Appending Content.');
-              infiniScroll(count);
+              
+              if(streamOK === true) {
+                  infiniScroll(count)
+              };
               count++;
         }
         });
 });
+
+var streamOK = true;
+var count = 1; //Page Count
 
 function signinCallback(authResult) {
       if (authResult['status']['signed_in']) {
@@ -63,17 +68,30 @@ function idPass(code,id,access,state) {
 }
 
 function infiniScroll(pageNumber) {
-    /*
+        
     $.ajax({
-        url: "imageload",
-        type:'POST',
-        data: pageNumber, 
+        url: "getMoreImages/"+pageNumber+".htm",
+        type:'GET',
         success: function(imageJSON){
-            //DO THINGS HERE
+            
+            var imageResults = $.parseJSON(imageJSON);
+            for(var i=0;i<6;i++) {
+                if(imageResults.images[i].userID !== "") {
+                
+                    $("#contentList").append(
+                            '<li class="polaroid">'+
+                                '<a href="javascript:void(0)" title="'+imageResults.images[i].userID+'">'+
+                                        '<img src="uploads/'+imageResults.images[i].filename+'" alt="'+imageResults.images[i].userID+'" />'+
+                                '</a>'+
+                            '</li>');
+                } else {
+                    streamOK = false;
+                }
+            }
+            
         }
     });
-    */
-    $("#contentList").append('<li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li><li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li><li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li><li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li><li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li><li class="polaroid"><a href="javascript:void(0)" title="Panda!"><img src="images/demo.jpg" alt="Panda!" /></a></li>');
+    
     $(".polaroid").draggable({scroll: true,revert: true,stack:".polaroid"});
     return false;
 }

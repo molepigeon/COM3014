@@ -19,7 +19,22 @@ $(function() { //Document Ready
     uploadingBay.on("complete", function(file){
         uploadingBay.removeAllFiles(true);
         hideUploadBox();
-        $('#uploadMessage').attr("style","display: block");    
+        $('#uploadMessage').attr("style","display: block");
+        
+        $.ajax({
+            url: "getMoreImages/0.htm",
+            type:'GET',
+            success: function(imageJSON){
+
+                var imageResults = $.parseJSON(imageJSON);
+                $("#contentList").append(
+                        '<li class="polaroid">'+
+                            '<a href="javascript:void(0)" title="'+imageResults.images[0].userID+'">'+
+                                    '<img src="uploads/'+imageResults.images[0].filename+'" alt="'+imageResults.images[0].userID+'" />'+
+                            '</a>'+
+                        '</li>');
+                }
+        });
     });
 });
 
