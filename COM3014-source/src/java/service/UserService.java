@@ -11,7 +11,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 /**
- *
+ * Stores a single User object.
+ * 
  * @author Michael
  */
 @Service

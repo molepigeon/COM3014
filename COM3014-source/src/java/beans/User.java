@@ -9,7 +9,7 @@ package beans;
 import org.springframework.context.annotation.Scope;
 
 /**
- *
+ * Stores a user's ID and real name.
  * @author Michael
  */
 @Scope("request")

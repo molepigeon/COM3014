@@ -9,7 +9,8 @@ package service;
 import beans.State;
 
 /**
- *
+ * Stores a single state object.
+ * 
  * @author Michael
  */
 public class StateService {

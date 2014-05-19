@@ -34,21 +34,22 @@ public class FileController implements ServletContextAware {
     
     ServletContext sc;
     
-    //TODO Remove this method
-    @RequestMapping("newjsp")
-    public String testFileUpload(ModelMap model){
-        model.addAttribute("test", UserService.getUser().getName());
-        return "newjsp";
-    }
-    
+    /**
+     * Handles a file upload, storing the file to disk.
+     * 
+     * @param model
+     * @param file
+     * @return the new view to be displayed
+     */
     @RequestMapping(value="fileupload", method=RequestMethod.POST)
     public String fileUploadHandler(ModelMap model, 
             @RequestParam("imageFile") MultipartFile file){
         User user = UserService.getUser();
         String output;
         if (!file.isEmpty()){
+            //File has something in it
             if (file.getContentType().contains("image")){
-                //File has something in it
+                //File's mime type says it's an image
                 try{
                     byte[] bytes = file.getBytes();
 
@@ -60,6 +61,7 @@ public class FileController implements ServletContextAware {
                     }
                     String userID = user.getID();
                     Date now = new Date();
+                    //Filename: <currentUnixTimestamp>-<GoogleProfileID>.jpg
                     File storageFile = new File(directory.getAbsolutePath() + 
                             File.separator + now.getTime() +"-"+userID+".jpg");
                     BufferedOutputStream bos = new BufferedOutputStream(

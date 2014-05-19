@@ -17,7 +17,6 @@ import com.google.api.client.json.jackson.JacksonFactory;
 import com.google.api.services.oauth2.Oauth2;
 import com.google.api.services.oauth2.model.Tokeninfo;
 import com.google.api.services.plus.Plus;
-import com.google.api.services.plus.model.PeopleFeed;
 import com.google.api.services.plus.model.Person;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -66,6 +65,12 @@ public class LoginController{
     
     String token;
     
+    /**
+     * Displays the landing page with a token generated for OAuth.
+     * 
+     * @param model
+     * @return 
+     */
     @RequestMapping(value="index", method=RequestMethod.GET)
     public String onIndex(ModelMap model){
         State state = new State();
@@ -74,15 +79,19 @@ public class LoginController{
         model.addAttribute("gState", state.getState());
         return "index";
     }
-
-    //Use onSubmit instead of doSubmitAction 
-    //when you need access to the Request, Response, or BindException objects
-    //@RequestMapping(value="/submit", method=RequestMethod.POST)
-    @RequestMapping(value="landing", method=RequestMethod.GET)
-    public String onLanding(ModelMap model){
-     return "nameView";
-     }
     
+    /**
+     * Handles the server side of the OAuth login process.
+     * 
+     * Code modified from Google documentation.
+     * 
+     * @param model
+     * @param code
+     * @param id
+     * @param accessID
+     * @param state
+     * @return 
+     */
     @RequestMapping(value="postuid", method=RequestMethod.POST)
     public String handleAjaxUserId(ModelMap model,  
             @RequestParam("code") String code,
@@ -128,12 +137,6 @@ public class LoginController{
             }
             
             token = tokenResponse.toString();
-            
-            //            
-            //            
-            //THIS CODE MIGHT NEED TO BE A SERVICE?
-            //
-            //
             
             Plus service = new Plus.Builder(TRANSPORT, JSON_FACTORY, credential).setApplicationName(APPLICATION_NAME).build();
             Person thisUser = service.people().get("me").execute();

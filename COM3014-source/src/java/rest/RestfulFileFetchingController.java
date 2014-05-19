@@ -25,7 +25,6 @@ public class RestfulFileFetchingController implements ServletContextAware{
     
     @RequestMapping(value="getMoreImages/{index}/{shunt}", method=RequestMethod.GET)
     public String getMoreImages(ModelMap model, @PathVariable("index") int index, @PathVariable("shunt") int shunt){
-        //TODO implement this
         int firstFile = index * 6;
         //File directory BECAUSE JAVA
         File directory = new File(sc.getRealPath("")+File.separator+"uploads");

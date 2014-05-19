@@ -7,7 +7,8 @@
 package beans;
 
 /**
- *
+ * Stores a state token for confirming the user's identity - part of OAuth.
+ * 
  * @author Michael
  */
 public class State {
