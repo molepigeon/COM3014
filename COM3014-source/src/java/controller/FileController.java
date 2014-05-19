@@ -10,12 +10,12 @@ import beans.User;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Date;
 import javax.servlet.ServletContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,7 +45,7 @@ public class FileController implements ServletContextAware {
     public String fileUploadHandler(ModelMap model, 
             @RequestParam("imageFile") MultipartFile file){
         User user = UserService.getUser();
-        String output = "Nothing";
+        String output;
         if (!file.isEmpty()){
             if (file.getContentType().contains("image")){
                 //File has something in it
@@ -69,9 +69,8 @@ public class FileController implements ServletContextAware {
                     
                     output = "Uploaded to "+storageFile.getAbsolutePath();
                     System.out.println(output);
-                } catch (Exception e){
+                } catch (IOException e){
                     output = "Upload failed";
-                    e.printStackTrace();
                 }
             } else {
                 output = "Not an image";
