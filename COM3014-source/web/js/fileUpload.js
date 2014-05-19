@@ -1,3 +1,6 @@
+//Parameters for the Dropzone code
+//  Allow only image MIME types, with a max size of 5MB
+//  Only one file may be uploaded at a time
 Dropzone.options.uploader = {
   paramName: "imageFile",
   maxFilesize: 5,
@@ -9,13 +12,18 @@ Dropzone.options.uploader = {
   }
 };
 
-$(function() { //Document Ready  
+//Document Ready 
+$(function() { 
     var uploadingBay = new Dropzone("#uploader");
     
+    //When a file is dropped onto the box, hide the message.
     uploadingBay.on("drop", function(){
        $('#uploadMessage').attr("style","display: none");     
     });
     
+    //When a file upload is complete, remove the files from the box
+    //  reset the loading message and hide the upload box.
+    //  Then refresh the picture list to include the new file.
     uploadingBay.on("complete", function(){
         uploadingBay.removeAllFiles(true);
         hideUploadBox();
